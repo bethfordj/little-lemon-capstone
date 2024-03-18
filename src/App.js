@@ -8,8 +8,13 @@ import Order from './Pages/OrderOnline';
 import Reservations from './Pages/Reservations';
 import Navbar from './Components/Navbar';
 import Contact from './Pages/Contact';
+import Footer from './Components/Footer';
 import Cart from './Pages/Cart';
 import './App.css';
+import "@fontsource/karla"; // Defaults to weight 400
+import "@fontsource/karla/400.css"; // Specify weight
+import "@fontsource/karla/400-italic.css"; // Specify weight and style
+import "@fontsource/markazi-text"; // Defaults to weight 400
 
 const App = () => {
  return (
@@ -36,6 +41,7 @@ const App = () => {
           <Route path="/contact/email" element={<Contact subsection="email" />} />
 
         </Routes>
+        <Footer />
     </>
  );
 };

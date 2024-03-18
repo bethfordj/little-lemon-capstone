@@ -1,6 +1,42 @@
+/* ---- START: Text Basics ---- */
+
+* {
+  font-family: "Karla", sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family:  "Markazi Text", serif;
+  line-height: 1.4em;
+}
+h1 {
+  font-size: 40pt;
+}
+h2 {
+  font-size: 24pt;
+}
+h3 {
+  font-size: 18pt;
+}
+h4 {
+  font-size: 16pt;
+}
+p {
+  font-size: 16pt;
+  line-height:1.5em;
+}
+
+/* ---- END: Text Basics ---- */
+/* ---- START: Layout Basics ---- */
+
 body {
   padding: 0 4vw;
 }
+.flex-wrap {
+  display: flex;
+}
+
+/* ---- END: Layout Basics ---- */
+/* ---- START: Screen Reader Classes ---- */
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -11,12 +47,15 @@ body {
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+/* ---- END: Screen Reader Classes ---- */
 /* ---- START: Logo & Navbar ---- */
-.nav__container {
+
+.flex-wrap.nav__container {
   display: flex;
   height: 60px;
 }
-.nav__container ul {
+.flex-wrap.nav__container ul {
   display: flex;
   justify-content: space-evenly;
   li {
