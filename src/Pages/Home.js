@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import FeaturedBanner from '../Components/FeatureBanner';
 import { Helmet } from 'react-helmet';
 import FeaturedCards from '../Components/FeaturedCards';
+import TestimonialsBanner from '../Components/TestimonialsBanner';
 
 var featuredValues = {
     title: "Specials",
@@ -41,6 +42,32 @@ var featuredValues = {
         linkText: "Order delivery",
     }
 };
+var testimonialValues = [
+    {
+        rating: 5,
+        name: "Jane Doe",
+        quote: "My favorite place to eat!",
+        img: {
+            alt: "Jane Doe's photo",
+            src: "./src/assets/jane-doe.jpg"
+        }
+    },
+    {
+        rating: 4,
+        name: "Joe Schoe",
+        quote: "Good food"
+    },
+    {
+        rating: 3.5,
+        name: "John Smith",
+        quote: "Unusual but good"
+    },
+    {
+        rating: 4,
+        name: "Mary Jane",
+        quote: "Delicious!"
+    }
+];
 
 const Home = () => {
 	const navigate = useNavigate();
@@ -64,6 +91,7 @@ const Home = () => {
                 ]}
             />
             <FeaturedCards {...featuredValues} />
+            <TestimonialsBanner title="Testimonials" cards={testimonialValues} />
 			<div className="about-container">
 				<p>
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
