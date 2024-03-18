@@ -1,9 +1,14 @@
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const OrderOnline = () => {
 	const navigate = useNavigate();
 	return (
 		<div className="container">
+			<Helmet>
+				<title>Order Online</title>
+				<description>Place an order for pickup.</description>
+			</Helmet>
 			<div className="title">
 				<h1>About</h1>
 			</div>

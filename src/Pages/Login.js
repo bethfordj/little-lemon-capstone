@@ -1,9 +1,14 @@
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
 	const navigate = useNavigate();
 	return (
 		<div className="container">
+			<Helmet>
+                <title>Login</title>
+				<description>Login to see your account.</description>
+            </Helmet>
 			<div className="title">
 				<h1>About</h1>
 			</div>

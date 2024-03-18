@@ -1,9 +1,14 @@
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Reservations = () => {
 	const navigate = useNavigate();
 	return (
 		<div className="container">
+			<Helmet>
+				<title>Reservations</title>
+				<description>Reserve a table at a specific date and time</description>
+			</Helmet>
 			<div className="title">
 				<h1>About</h1>
 			</div>
