@@ -79,7 +79,7 @@ const Home = () => {
 			<div className="title">
 				<h1 className="sr-only">Home</h1>
 			</div>
-            <FeaturedBanner 
+            <FeaturedBanner key="home__hero-banner"
                 title="Hero Banner" 
                 subtitle="Subtitle"
                 text="This is the small paragraph that shows in the hero banner."
@@ -90,9 +90,11 @@ const Home = () => {
                     }
                 ]}
             />
-            <FeaturedCards {...featuredValues} />
-            <TestimonialsBanner title="Testimonials" cards={testimonialValues} />
+            
+            <FeaturedCards key="home__featured-cards" {...featuredValues} />
+            <TestimonialsBanner key="home__testimonials" title="Testimonials" cards={testimonialValues} />
             <FeaturedBanner 
+                key="home__about-banner"
                 title="About" 
                 subtitle="Subtitle"
                 text="This is the small paragraph that shows in the hero banner."

@@ -33,9 +33,9 @@ var socialList = [
 
 const Footer = () => {
 	return (
-			<footer className="footer">
+			<footer className={`footer full-width-wrapper`}>
                 <div className="footer__column-1">
-                    <img className="footer__logo" alt="little lemon restaurant's logo" src={require("../assets/Logo.svg")}></img>
+                    <img className="footer__logo" alt="little lemon restaurant's logo" src={require("../assets/Logo.svg").default}></img>
                 </div>
                 <LinkColumn parent="footer" title="Navigation" hlevel={2} i="2" content={<NavigationLinks/>} />
                 <LinkColumn parent="footer" title="Contact" hlevel={2} i="3" list={contactList} />

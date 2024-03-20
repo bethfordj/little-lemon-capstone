@@ -41,7 +41,7 @@ const App = () => {
           <Route path="/contact/email" element={<Contact subsection="email" />} />
 
         </Routes>
-        <Footer />
+        <Footer key="footer"/>
     </>
  );
 };

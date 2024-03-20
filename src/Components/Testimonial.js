@@ -18,14 +18,14 @@ const Testimonial = (props) => {
     image(props);
 
         return (
-            <div className="testimonial">
+            <section className={`testimonial full-width-wrapper`}>
                 <div className="testimonial__rating-row">
                     Rating
                 </div>
                 {imageContent}
                 <h3 className="testimonial__name">{props.name}</h3>
                 <p className="testimonial__quote">{props.quote}</p>
-            </div>
+            </section>
         )
 };
 
