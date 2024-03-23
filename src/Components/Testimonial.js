@@ -1,4 +1,5 @@
 import React from 'react';
+import defaultImage from "../assets/no-profile-image-default.png";
 
 const Testimonial = (props) => {
     var imageContent;
@@ -6,12 +7,12 @@ const Testimonial = (props) => {
     function image(props) {
         if (props.img) {
             imageContent = (
-                <img className="testimonial__image" alt={props.img.alt} src={props.img.src}></img>
+                <img className="testimonial__image" alt={props.img.alt} src={require(`../assets/${props.img.src}`)}></img>
           );
         }
         if (!props.img) {
             imageContent = (
-                <img className="testimonial__image" alt="" src="./src/assets/no-profile-image-default.png"></img>
+                <img className="testimonial__image" alt="" src={defaultImage}></img>
             );
         }
     }

@@ -5,7 +5,7 @@ const Card = (props) => {
         return (
             <div className="card">
                 <div className="card__img-container">
-                    <img className="featured-banner__back-image" alt={props.img.alt} src={props.img.src}></img>
+                    <img className="featured-banner__back-image" alt={props.img.alt} src={require(`../assets/${props.img.src}`)}></img>
                 </div>
                 <div className="card__text-container">
                     <div className="card__title-row">

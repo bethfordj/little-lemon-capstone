@@ -12,7 +12,7 @@ const FeaturedCards = (props) => {
     let third = props.third;
 
         return (
-            <div className="featured-cards">
+            <section className="featured-cards">
                 <div className="featured-cards__title-row">
                     <h2 className="featured-cards__title">{props.title}</h2>
                     <ButtonLink  className="featured-cards__button button" to={props.btnLink}>{props.btnText}</ButtonLink>
@@ -22,7 +22,7 @@ const FeaturedCards = (props) => {
                     <Card {...second} />
                     <Card {...third} />
                 </div>
-            </div>
+            </section>
         )
 };
 

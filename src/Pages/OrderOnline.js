@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 const OrderOnline = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="container">
+		<div className={`container order-online`}>
 			<Helmet>
 				<title>Order Online</title>
 				<description>Place an order for pickup.</description>

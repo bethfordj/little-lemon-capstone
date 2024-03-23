@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 const Contact = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="container">
+		<div className={`container contact`}>
 			<Helmet>
                 <title>Login</title>
 				<description>Login to see your account.</description>

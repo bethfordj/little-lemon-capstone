@@ -1,11 +1,22 @@
-import React, { Children } from 'react';
-
 // LinkColumn must be sent either content (elements to show) or list (an array of objects with link text and hrefs)
 const LinkColumn = (props) => {
     var columnClass = props.parent + "__column" + "-" + props.i;
     var titleClass = props.parent + "__title";
     var linkClass = props.parent + "__column-link";
     var titleElement;
+    var content;
+    function getContent(props) {
+        if(props.content) {
+            content = props.content;
+        }
+        else {
+            content = (
+                <ul>
+                   {props.list.map(link => {return <li key={link.href} ><a className={linkClass} href={link.href}>{link.text}</a></li>})}
+                </ul>
+            )
+        }
+    }
 
     function getTitle(props){
         switch (props.hlevel) {
@@ -40,12 +51,13 @@ const LinkColumn = (props) => {
     if(props.hlevel) {
         getTitle(props);
     }
+    getContent(props);
 
     
 	return (
-			<div className="{columnClass}">
+			<div className={columnClass}>
                 {props.hlevel && titleElement}
-                {props.content ? props.content : props.list.map(link => {return <a className={linkClass} href={link.href}>{link.text}</a>})}
+                {content}
             </div>
 	);
 };

@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 const Reservations = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="container">
+		<div className={`container reservations`}>
 			<Helmet>
 				<title>Reservations</title>
 				<description>Reserve a table at a specific date and time</description>

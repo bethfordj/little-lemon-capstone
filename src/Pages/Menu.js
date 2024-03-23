@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 const Menu = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="container">
+		<div className={`container menu`}>
 			<Helmet>
                 <title>Menu</title>
 				<description>See the dishes offered at the Little Lemon Restaurant.</description>

@@ -4,6 +4,10 @@ import { Helmet } from 'react-helmet';
 import FeaturedCards from '../Components/FeaturedCards';
 import TestimonialsBanner from '../Components/TestimonialsBanner';
 
+
+
+
+
 var featuredValues = {
     title: "Specials",
     btnText: "Online Menu",
@@ -11,7 +15,7 @@ var featuredValues = {
     first: {
         img: {
             alt: "greek salad",
-            src: "src/assets/greek salad.jpg"
+            src: "greek-salad.jpg"
         },
         title: "Greek Salad",
         price: "$12.99",
@@ -22,7 +26,7 @@ var featuredValues = {
     second: {
         img: {
             alt: "bruschetta which is toasted bread with tomatoes, garlic, basil, and olive oil",
-            src: "../assets/bruchetta.svg"
+            src: "bruchetta.png"
         },
         title: "Bruschetta",
         price: "$5.50",
@@ -33,7 +37,7 @@ var featuredValues = {
     third: {
         img: {
             alt: "lemon cake",
-            src: "../assets/lemon-dessert.jpg"
+            src: "lemon-dessert.jpg"
         },
         title: "Lemon Dessert",
         price: "$5.00",
@@ -49,7 +53,7 @@ var testimonialValues = [
         quote: "My favorite place to eat!",
         img: {
             alt: "Jane Doe's photo",
-            src: "./src/assets/jane-doe.jpg"
+            src: "jane-doe.jpg"
         }
     },
     {
@@ -72,7 +76,7 @@ var testimonialValues = [
 const Home = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="container">
+		<div className={`container home`}>
             <Helmet>
                 <title>Home</title>
             </Helmet>
@@ -86,7 +90,7 @@ const Home = () => {
                 img={[
                     {
                         alt:"",
-                        src:"../assets/restaurant.jpg"
+                        src:"restaurant.jpg"
                     }
                 ]}
             />
@@ -101,11 +105,11 @@ const Home = () => {
                 img={[
                     {
                         alt:"Maro and Adrian cooking together",
-                        src:"../assets/Mario and Adrian A.jpg"
+                        src:"Mario and Adrian A.jpg"
                     },
                     {
                         alt:"Mario and Adrian laughing together in the kitchen",
-                        src:"../assets/Mario and Adrian b.jpg"
+                        src:"Mario and Adrian b.jpg"
                     }
                 ]}
             />

@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 const Login = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="container">
+		<div className={`container login`}>
 			<Helmet>
                 <title>Login</title>
 				<description>Login to see your account.</description>

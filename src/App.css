@@ -28,33 +28,53 @@ p {
 /* ---- START: Layout Basics ---- */
 
 body {
-  padding: 0 4vw;
+  @media (min-width:1025px) {
+    padding-right: 10vw;
+    padding-left: 10vw;
+  }
+  @media (min-width: 641px) and (max-width:1024px) {
+    padding-right: 80px;
+    padding-left: 80px;
+  }
+  @media (max-width: 640px) {
+    padding: 0px;
+  }
+}
+section {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  @media (max-width: 640px) {
+    padding: 30px;
+  }
 }
 img {
   width: 100%;
 }
-.full-width-wrapper {
-  position: relative;
+@media (min-width: 641px) {
+  .full-width-wrapper {
+    position: relative;
+  }
+  
+  .full-width-wrapper::before, .full-width-wrapper::after {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    top: 0%;
+    background-color: inherit;
+    z-index: 0;
+  }
+  
+  .full-width-wrapper::before {
+    left: 100%;
+  }
+  
+  .full-width-wrapper::after {
+    right: 100%;
+  }
+  
 }
-
-.full-width-wrapper::before, .full-width-wrapper::after {
-  content: "";
-  position: absolute;
-  width: 100vw;
-  height: 100%;
-  top: 0%;
-  background-color: inherit;
-  z-index: 0;
-}
-
-.full-width-wrapper::before {
-  left: 100%;
-}
-
-.full-width-wrapper::after {
-  right: 100%;
-}
-
 /* ---- END: Layout Basics ---- */
 /* ---- START: Screen Reader Classes ---- */
 
@@ -143,12 +163,15 @@ img {
 }
 /* ---- END: Logo & Navbar ---- */
 /* ---- START: Featured Banner ---- */
+.home .featured-banner:nth-of-type(1) {
+    background-color: #495E57;
+}
 .featured-banner  {
   display: flex;
 }
 .featured-banner__text-container {
   width: 50%;
-  padding: 40px;
+  padding: 40px 0px;
 }
 .featured-banner__img-container {
   width: 50%;
@@ -166,14 +189,22 @@ img {
     flex-flow: column;
 }
 .card__text-container {
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
 }
 /* ---- END: Featured Cards ---- */
+/* ---- START: Testimonial Banner ---- */
+.testimonial-banner {
+  background-color: #EDEFEE;
+}
+.testimonial-banner__testimonial-container {
+  display: flex;
+}
 /* ---- START: Footer ---- */
 footer {
   display: flex;
   background-color: #495E57;
   color: white;
-  padding: 30px 80px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 /* ---- END: Footer ---- */

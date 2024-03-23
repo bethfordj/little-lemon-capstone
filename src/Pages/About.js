@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 const About = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="container">
+		<div className={`container about`}>
 			<Helmet>
                 <title>About</title>
 				<description>Learn more about the owners and restaurant background</description>
