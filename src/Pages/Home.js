@@ -87,6 +87,9 @@ const Home = () => {
                 title="Hero Banner" 
                 subtitle="Subtitle"
                 text="This is the small paragraph that shows in the hero banner."
+                btnLink="/reservations"
+                btnText="Reserve a Table"
+                class="hero-banner"
                 img={[
                     {
                         alt:"",
@@ -99,17 +102,18 @@ const Home = () => {
             <TestimonialsBanner key="home__testimonials" title="Testimonials" cards={testimonialValues} />
             <FeaturedBanner 
                 key="home__about-banner"
-                title="About" 
-                subtitle="Subtitle"
-                text="This is the small paragraph that shows in the hero banner."
+                title="Little Lemon" 
+                subtitle="Chicago"
+                text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollitAmet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit."
+                class="about-banner"
                 img={[
-                    {
-                        alt:"Maro and Adrian cooking together",
-                        src:"Mario and Adrian A.jpg"
-                    },
                     {
                         alt:"Mario and Adrian laughing together in the kitchen",
                         src:"Mario and Adrian b.jpg"
+                    },
+                    {
+                        alt:"Maro and Adrian cooking together",
+                        src:"Mario and Adrian A.jpg"
                     }
                 ]}
             />

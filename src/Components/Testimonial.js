@@ -19,14 +19,16 @@ const Testimonial = (props) => {
     image(props);
 
         return (
-            <section className={`testimonial full-width-wrapper`}>
+            <div className="testimonial">
                 <div className="testimonial__rating-row">
                     Rating
                 </div>
-                {imageContent}
-                <h3 className="testimonial__name">{props.name}</h3>
+                <div className="testimonial__image-name-row">
+                    {imageContent}
+                    <h3 className="testimonial__name">{props.name}</h3>
+                </div>
                 <p className="testimonial__quote">{props.quote}</p>
-            </section>
+            </div>
         )
 };
 

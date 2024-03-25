@@ -1,4 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+function ButtonLink({ to, children }) {
+    return <Link to={to}><button>{children}</button></Link>;
+}
+
 
 const FeaturedBanner = (props) => {
     var imageContent;
@@ -24,11 +30,12 @@ const FeaturedBanner = (props) => {
     image(props.img);
 
         return (
-            <section className={`featured-banner full-width-wrapper`}>
+            <section className={`featured-banner full-width-wrapper ${props.class}`}>
                 <div className="featured-banner__text-container">
                     <h2 className="featured-banner__title">{props.title}</h2>
                     <p className="featured-banner__subtitle">{props.subtitle}</p>
                     <p className="featured-banner__text">{props.text}</p>
+                    {props.btnLink && <ButtonLink  className={`featured-banner__button button`} to={props.btnLink}>{props.btnText}</ButtonLink>}
                 </div>
                 {imageContent}
             </section>
