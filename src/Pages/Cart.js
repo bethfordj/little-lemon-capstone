@@ -6,25 +6,14 @@ const Cart = () => {
 	return (
 		<div className={`container cart`}>
 			<Helmet>
-                <title>Login</title>
-				<description>Login to see your account.</description>
+                <title>Cart</title>
+				<description>See what's in your cart.</description>
             </Helmet>
 			<div className="title">
-				<h1>About</h1>
+				<h1>My Cart</h1>
 			</div>
-			<div className="about-container">
-				<p>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
-					eos tenetur beatae nihil dolorum possimus voluptate esse voluptatibus,
-					aliquid ratione facere enim eveniet modi necessitatibus quas
-					asperiores pariatur, amet velit?
-				</p>
-				<p>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
-					eos tenetur beatae nihil dolorum possimus voluptate esse voluptatibus,
-					aliquid ratione facere enim eveniet modi necessitatibus quas
-					asperiores pariatur, amet velit?
-				</p>
+			<div className="cart-container">
+				Cart component to go here
 			</div>
 		</div>
 	);

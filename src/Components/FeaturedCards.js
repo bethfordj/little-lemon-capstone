@@ -1,10 +1,7 @@
 import React from 'react';
 import Card from './Card';
-import { Link } from 'react-router-dom';
+import ButtonLink from './ButtonLink';
 
-function ButtonLink({ to, children }) {
-    return <Link to={to}><button>{children}</button></Link>;
-}
 
 const FeaturedCards = (props) => {
     let first = props.first;

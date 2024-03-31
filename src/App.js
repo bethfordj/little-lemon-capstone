@@ -10,6 +10,9 @@ import Navbar from './Components/Navbar';
 import Contact from './Pages/Contact';
 import Footer from './Components/Footer';
 import Cart from './Pages/Cart';
+import BookingPage from './Pages/BookingPage';
+import CheckBookingPage from './Pages/CheckBookingPage';
+import MyAccount from './Pages/MyAccount';
 import './App.css';
 import "@fontsource/karla"; // Defaults to weight 400
 import "@fontsource/karla/400.css"; // Specify weight
@@ -17,6 +20,7 @@ import "@fontsource/karla/400-italic.css"; // Specify weight and style
 import "@fontsource/markazi-text"; // Defaults to weight 400
 
 const App = () => {
+
  return (
     <>
       <Helmet>
@@ -35,10 +39,13 @@ const App = () => {
           <Route path="/order-online" element={<Order />} />
           <Route path="/order-online/my-cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/my-account" element={<MyAccount />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact/address" element={<Contact subsection="address" />} />
           <Route path="/contact/phone" element={<Contact subsection="phone" />} />
           <Route path="/contact/email" element={<Contact subsection="email" />} />
+          <Route path="/reservations/book" element={<BookingPage />} />
+          <Route path="/reservations/check" element={<CheckBookingPage />} />
 
         </Routes>
         <Footer key="footer"/>

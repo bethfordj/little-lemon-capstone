@@ -4,29 +4,18 @@ import { Helmet } from 'react-helmet';
 const OrderOnline = () => {
 	const navigate = useNavigate();
 	return (
-		<div className={`container order-online`}>
+		<article className={`container order-online`}>
 			<Helmet>
 				<title>Order Online</title>
 				<description>Place an order for pickup.</description>
 			</Helmet>
 			<div className="title">
-				<h1>About</h1>
+				<h1>Place an Order Online</h1>
 			</div>
-			<div className="about-container">
-				<p>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
-					eos tenetur beatae nihil dolorum possimus voluptate esse voluptatibus,
-					aliquid ratione facere enim eveniet modi necessitatibus quas
-					asperiores pariatur, amet velit?
-				</p>
-				<p>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
-					eos tenetur beatae nihil dolorum possimus voluptate esse voluptatibus,
-					aliquid ratione facere enim eveniet modi necessitatibus quas
-					asperiores pariatur, amet velit?
-				</p>
+			<div className="order-container">
+				Menu with order component
 			</div>
-		</div>
+		</article>
 	);
 };
 

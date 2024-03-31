@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import ReservationTop from '../Components/ReservationTop';
 
-const Reservations = () => {
+const BookingPage = () => {
 	const navigate = useNavigate();
 	return (
 		<article className={`container reservations`}>
@@ -10,4 +10,4 @@ const Reservations = () => {
 	);
 };
 
-export default Reservations;
+export default BookingPage;

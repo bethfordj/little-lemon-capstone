@@ -10,7 +10,7 @@ const About = () => {
 				<description>Learn more about the owners and restaurant background</description>
             </Helmet>
 			<div className="title">
-				<h1>About</h1>
+				<h1>About the Little Lemon Restaurant</h1>
 			</div>
 			<div className="about-container">
 				<p>

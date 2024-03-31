@@ -76,7 +76,7 @@ var testimonialValues = [
 const Home = () => {
 	const navigate = useNavigate();
 	return (
-		<div className={`container home`}>
+		<article className={`container home`}>
             <Helmet>
                 <title>Home</title>
             </Helmet>
@@ -117,7 +117,7 @@ const Home = () => {
                     }
                 ]}
             />
-		</div>
+		</article>
 	);
 };
 
