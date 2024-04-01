@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { GlobalLoginContext } from './Components/GlobalStateContext';
+import { ContextWrapper } from './Components/GlobalStateContext';
 import App from './App';
 
 
@@ -11,9 +11,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  <React.StrictMode>
     <BrowserRouter>
-      <GlobalLoginContext.Provider  value={ "", false}>
+      <ContextWrapper  name={""} isLoggedIn={false}>
          <App />
-      </GlobalLoginContext.Provider>
+      </ContextWrapper>
     </BrowserRouter>
  </React.StrictMode>
 );

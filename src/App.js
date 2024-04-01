@@ -13,6 +13,7 @@ import Cart from './Pages/Cart';
 import BookingPage from './Pages/BookingPage';
 import CheckBookingPage from './Pages/CheckBookingPage';
 import MyAccount from './Pages/MyAccount';
+import CreateAnAccount from './Pages/CreateAnAccount';
 import './App.css';
 import "@fontsource/karla"; // Defaults to weight 400
 import "@fontsource/karla/400.css"; // Specify weight
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/order-online/my-cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/my-account" element={<MyAccount />} />
+          <Route path="/create-account" element={<CreateAnAccount />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact/address" element={<Contact subsection="address" />} />
           <Route path="/contact/phone" element={<Contact subsection="phone" />} />

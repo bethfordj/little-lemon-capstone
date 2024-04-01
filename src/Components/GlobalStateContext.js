@@ -12,7 +12,7 @@ export const ContextWrapper = (props) => {
  const [ loginState, setLoginState ] = useState(props.isLoggedIn);
  
  return (
-  <GlobalLoginContext.Provider value={{ name, loginState }}>
+  <GlobalLoginContext.Provider value={{ name, setName, loginState, setLoginState }}>
    {props.children}
   </GlobalLoginContext.Provider>
  );
