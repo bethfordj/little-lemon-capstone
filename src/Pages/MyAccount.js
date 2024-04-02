@@ -9,7 +9,7 @@ const MyAccount = (props) => {
 	const context = useContext(GlobalLoginContext);
 
 	const goTo = useNavigate();
-    const content = (<></>);
+    let content = (<></>);
 
 	function forwardUser() {
 		if (context.loginState) {
@@ -30,9 +30,6 @@ const MyAccount = (props) => {
             goTo({ to: "/login"});
 		}
 	}
-
-	var loginContent = (<></>);
-	
 
 	return (
         <>
