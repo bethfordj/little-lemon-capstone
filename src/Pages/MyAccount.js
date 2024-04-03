@@ -11,7 +11,7 @@ const MyAccount = (props) => {
 	const goTo = useNavigate();
     let content = (<></>);
 
-	function forwardUser() {
+	function checkLogin() {
 		if (context.loginState) {
 			content = (
                 <article  className={`container my-account`}>
@@ -27,10 +27,10 @@ const MyAccount = (props) => {
             );
 		}
 		else {
-            goTo({ to: "/login"});
+            goTo("/login", { replace: true });
 		}
 	}
-
+    checkLogin();
 	return (
         <>
             {content}

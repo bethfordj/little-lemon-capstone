@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { NavLink } from 'react-router-dom';
@@ -19,10 +18,10 @@ const Login = (props) => {
 
 	function forwardUser(destination) {
 		if (destination && destination.length > 0) {
-			goTo({ to: {destination}});
+			goTo({destination}, { replace: true });
 		}
 		else {
-			goTo({ to: "/my-account"});
+			goTo("/my-account", { replace: true });
 		}
 	}
 
