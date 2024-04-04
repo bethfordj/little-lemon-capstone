@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { GlobalLoginContext } from '../Components/GlobalStateContext';
 import { Controller, useForm } from 'react-hook-form'
 import DatePicker from 'react-datepicker'
+import FormFieldOption from '../Components/FormFieldOption';
 
 const BookingPage = () => {
 	const context = useContext(GlobalLoginContext);
@@ -16,6 +17,13 @@ const BookingPage = () => {
 	} = useForm();
 
 	const goTo = useNavigate();
+
+    const times = {
+        one: ["19:00:00", "7:00 PM"],
+        two: ["21:30:00", "9:30 PM"],
+        three: ["22:00:00", "10:00 PM"],
+        four: ["22:30:00", "10:30 PM"]
+    }
 
     const onSubmit = async e => {
 
@@ -56,6 +64,17 @@ const BookingPage = () => {
                     )}
                     />
 				</div>
+                <div className="form__field-group">
+					<label htmlFor='time'>Time to Reserve: </label>
+					{errors.date && (
+						<p className="form__error-message">{errors.date.message}</p>
+					)}
+					
+                    <select {...register("time")}>
+                        {(times).map(time => {return <FormFieldOption value={time[0]} text={time[1]}/> })}
+                    </select>
+				</div>
+                
 				<div className="form__field-group">
 					<label htmlFor='username'>Username: </label>
 					{errors.username && (
