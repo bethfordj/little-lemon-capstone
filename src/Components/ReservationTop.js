@@ -15,7 +15,6 @@ const ReservationTop = () => {
 			    </div>
 			    <div className="reservation-container">
 				    <ButtonLink  className={`reservation-container__book-btn button`} to="/reservations/book">Book a Table</ButtonLink>
-				    <ButtonLink  className={`reservation-container__check-btn button`} to="/reservations/check">Check a Booking</ButtonLink>
 			    </div>
             </>
 	);

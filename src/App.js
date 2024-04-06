@@ -11,7 +11,6 @@ import Contact from './Pages/Contact';
 import Footer from './Components/Footer';
 import Cart from './Pages/Cart';
 import BookingPage from './Pages/BookingPage';
-import CheckBookingPage from './Pages/CheckBookingPage';
 import MyAccount from './Pages/MyAccount';
 import CreateAnAccount from './Pages/CreateAnAccount';
 import './App.css';
@@ -47,8 +46,6 @@ const App = () => {
           <Route path="/contact/phone" element={<Contact subsection="phone" />} />
           <Route path="/contact/email" element={<Contact subsection="email" />} />
           <Route path="/reservations/book" element={<BookingPage />} />
-          <Route path="/reservations/check" element={<CheckBookingPage />} />
-
         </Routes>
         <Footer key="footer"/>
     </>
