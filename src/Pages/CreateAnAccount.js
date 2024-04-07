@@ -44,10 +44,10 @@ const CreateAnAccount = (props) => {
                     <div className="title">
                         <h1>Create Account</h1>
                     </div>
-                    <form className="create-account-form__container" onSubmit={handleSubmit(onSubmit)}>
+                    <form className={`create-account-form__container form-container`} onSubmit={handleSubmit(onSubmit)}>
                     
                         <div className="form__field-group">
-                            <label htmlFor='username'>Username: </label>
+                            <label className="required" htmlFor='username'>Username: </label>
                             {errors.username && (
                                 <p className="form__error-message">{errors.username.message}</p>
                             )}
@@ -65,7 +65,7 @@ const CreateAnAccount = (props) => {
                             />
                         </div>
                         <div className="form__field-group">
-                            <label htmlFor="password">Password: </label>
+                            <label className="required" htmlFor="password">Password: </label>
                             {errors.password && (
                                 <p className="form__error-message">{errors.password.message}</p>
                             )}
@@ -83,7 +83,7 @@ const CreateAnAccount = (props) => {
                             />
                         </div>
                         <div className="form__field-group">
-                            <label htmlFor="passwordConfirmation">Confirm Password: </label>
+                            <label className="required" htmlFor="passwordConfirmation">Confirm Password: </label>
                             {errors.password && (
                                 <p className="form__error-message">{errors.password.message}</p>
                             )}
@@ -104,7 +104,7 @@ const CreateAnAccount = (props) => {
                                 })}
                             />
                         </div>
-                        <button type="submit" className={`create-account__submit-button button`}>Create Account</button>
+                        <button type="submit" className={`create-account__submit-button submit-button button`}>Create Account</button>
                     </form>
                 </article>
 			);

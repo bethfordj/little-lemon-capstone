@@ -41,6 +41,10 @@ body {
     padding: 0px;
   }
 }
+article {
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
 section {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -347,6 +351,71 @@ h3.testimonial__name {
   padding: 5px 0px;
   text-overflow: ellipsis;
 }
+/* ---- END: Testimonial Banner ---- */
+/* ---- START: Forms ---- */
+.form-container {
+  padding-bottom: 60px;
+  @media (min-width:1025px) {
+    width: 50%;
+    margin: 0px 25%;
+  }
+  @media (min-width: 641px) and (max-width:1024px) {
+    width: 70%;
+    margin: 0px 15%;
+  }
+  @media (max-width: 640px) {
+    width: 100%;
+    padding: 0px;
+  }
+}
+.form__field-group {
+  padding: 12px 0px;
+}
+label {
+  font-size: 1em;
+  padding-left: 3px;
+}
+.required::after {
+  content:"\002A";
+  color:red;
+}
+.form__field-group input,
+.form__field-group select {
+  margin-top: 2px;
+  width: 100%;
+  height: 2.5em;
+  border-radius: 5px;
+  border: 2px solid #EDEFEE;
+  &:focus {
+    border: 2px solid #495E57;
+    outline-color: #495E57;
+  }
+}
+
+.form__field-group input {
+  width: 98%;
+  &::placeholder {
+    font-size: 1.2em;
+    padding: 0px 5px;
+    color: #9e9e9e; 
+  }
+}
+.form__field-group select {
+  font-size: 1em;
+  padding: 0px 5px;
+  color: #9e9e9e;
+}
+.submit-button {
+  margin: 20px 15% 0px 15%;
+  width: 70%;
+  text-align: center;
+}
+.no-account-message {
+  text-align: center;
+  font-size: 1em;
+  margin-top: 5em;
+}
+/* ---- END: Forms ---- */
 /* ---- START: Footer ---- */
 footer {
   display: flex;
@@ -386,3 +455,23 @@ footer ul li a:hover {
   text-decoration:underline;
 }
 /* ---- END: Footer ---- */
+/* ---- START: Home Only ---- */
+article.home {
+  padding: 0px;
+}
+/* ---- START: Home Only ---- */
+/* ---- START: Logged In Links ---- */
+/* header and footer */
+.nav__hover-state-links {
+  display: block;
+  padding-top: 5px;
+}
+/* header only */
+nav .nav__hover-state-links {
+  display:none
+}
+nav .account-hover:hover .nav__hover-state-links {
+  display:block;
+  background-color: rgba(250, 206, 20,0.15);
+  padding: 10px;
+}
