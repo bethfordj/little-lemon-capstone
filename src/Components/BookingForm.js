@@ -8,7 +8,6 @@ import FormFieldOption from '../Components/FormFieldOption';
 
 const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 	const context = useContext(GlobalLoginContext);
-    const [hasDate, setHasDate] = useState(false);
     const [times, setTimes] = useState([]);
     const goTo = useNavigate();
 	const {
@@ -21,8 +20,6 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 	} = useForm();
 	
     let dates = [];
-    let availability = availableDateTime;
-    let index;
 
     function getDates(){
         for (let i=0; i < availableDateTime.length; i++) {
@@ -32,12 +29,28 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
     function getTimes( index ){
         if(index) {
             console.log(index);
-            console.log("availability -> ", JSON.stringify(availableDateTime));
-            console.log("availability[index] -> ", JSON.stringify(availableDateTime[index]));
-            console.log("availability[index].times -> ", JSON.stringify(availability[index].times));
-            setTimes(availability[index].times);
-            //availability.splice(index,1);
+            console.log("availableDateTime -> ", JSON.stringify(availableDateTime));
+            console.log("availableDateTime[index] -> ", JSON.stringify(availableDateTime[index]));
+            console.log("availableDateTime[index].times -> ", JSON.stringify(availableDateTime[index].times));
+            setTimes(availableDateTime[index].times);
         }
+    }
+    function handleAvailability() {
+        console.log("availableDateTime Before -> ", JSON.stringify(availableDateTime));
+        let availability = [];
+        for (let i = 0; i < availableDateTime.length; i++) {
+            if(i == getValues("date")) {
+                let selectedDate = availableDateTime[i];
+                (selectedDate.times).splice(getValues("time"),1);
+                availability.push(selectedDate);
+                console.log("IF!!!!")
+            }
+            else {
+                availability.push(availableDateTime[i]);
+            }
+        }
+        setAvailableDateTime(availability);
+        console.log("availableDateTime After -> ", JSON.stringify(availableDateTime));
     }
 
     const onSubmit = async e => {
@@ -51,14 +64,12 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
             "number": "4",
             "occasion": "justBecause"
         }
+        handleAvailability()
 		context.setName(result.firstName);
 		context.setLoginState(true);
-        goTo("/reservations", { replace: true });
+       // goTo("/reservations", { replace: true });
 	};
     getDates(availableDateTime);
-    if(hasDate) {
-        getTimes(getValues("date"));
-    }
 
 	return (
 		
@@ -69,7 +80,7 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 						<p className="form__error-message">{errors.date.message}</p>
 					)}
 					
-                    <select 
+                    <select key="dateSelectField"
                         {...register("date", {
 							required: "A date is required.",
 							minLength: {
@@ -77,9 +88,10 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 								message: "A date is required."
 							  }
 						})}
+                        onBlur={() => { getTimes(getValues("date")) }}
                         >
-                        <option value="" default>Select a date.</option>
-                        {(dates).map((date,index) => {return <FormFieldOption value={index} text={date.toDateString()}/> })}
+                        <option key="selectDate" value="" default>Select a date.</option>
+                        {(dates).map((date,index) => {return <FormFieldOption optionKey={(date.toDateString()).replaceAll(' ', '-')} value={index} text={date.toDateString()}/> })}
                     </select>
 				</div>
                 <div className="form__field-group">
@@ -88,15 +100,16 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 						<p className="form__error-message">{errors.date.message}</p>
 					)}
 					
-                    <select {...register("time", {
+                    <select key="timeSelectField" {...register("time", {
 							required: "A time is required.",
 							minLength: {
 								value: 1,
 								message: "A time is required."
 							  }
-						})}>
-                        <option value="" default>Select a time.</option>
-                        { (times.length > 0) ? (times).map(time => {return <FormFieldOption value={time} text={`${time} PM`}/> }) : <option disabled value="" default>You must select a date first.</option> }
+						})}
+                        >
+                        <option key="selectTime" value="" default>Select a time.</option>
+                        { (times.length > 0) ? (times).map(( time, index ) => {return <FormFieldOption optionKey={getValues("date").concat((time).replaceAll(' ', '-'))}value={index} text={`${time} PM`}/> }) : <option key="selectDateFirst" disabled value="" default>You must select a date first.</option> }
                     </select>
 				</div>
                 
@@ -130,10 +143,10 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 					
                     <select {...register("occasion")}>
                     <option value="" default>What is the gathering for?</option>
-                        <option value="anniversary">Anniversary</option>
-                        <option value="birthday">Birthday</option>
-                        <option value="graduation">Graduation</option>
-                        <option value="justBecause">Just Because</option>
+                        <option key="anniversary" value="anniversary">Anniversary</option>
+                        <option key="birthday" value="birthday">Birthday</option>
+                        <option key="graduation" value="graduation">Graduation</option>
+                        <option key="justBecause" value="justBecause">Just Because</option>
                     </select>
 				</div>
 				<button type="submit" className={`booking-form__submit-button submit-button button`}>Submit Reservation</button>

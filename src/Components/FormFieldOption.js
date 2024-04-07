@@ -3,7 +3,7 @@ import React from 'react';
 const FormFieldOption = (props) => {
 
         return (
-            <option value={props.value}>{props.text}</option>
+            <option key={props.optionKey} value={props.value}>{props.text}</option>
         )
 };
 
