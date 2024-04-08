@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  <React.StrictMode>
     <BrowserRouter>
-      <ContextWrapper  name={""} isLoggedIn={false}>
+      <ContextWrapper  name={""} isLoggedIn={false} bookings={[]} cart={[]} >
          <App />
       </ContextWrapper>
     </BrowserRouter>

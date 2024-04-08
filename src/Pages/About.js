@@ -1,8 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 const About = () => {
-	const navigate = useNavigate();
+	
 	return (
 		<div className={`container about`}>
 			<Helmet>
@@ -13,18 +12,21 @@ const About = () => {
 				<h1>About the Little Lemon Restaurant</h1>
 			</div>
 			<div className="about-container">
-				<p>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
-					eos tenetur beatae nihil dolorum possimus voluptate esse voluptatibus,
-					aliquid ratione facere enim eveniet modi necessitatibus quas
-					asperiores pariatur, amet velit?
-				</p>
-				<p>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
-					eos tenetur beatae nihil dolorum possimus voluptate esse voluptatibus,
-					aliquid ratione facere enim eveniet modi necessitatibus quas
-					asperiores pariatur, amet velit?
-				</p>
+				<div className="about__text-column">
+					<p>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
+						eos tenetur beatae nihil dolorum possimus voluptate esse voluptatibus,
+						aliquid ratione facere enim eveniet modi necessitatibus quas
+						asperiores pariatur, amet velit?
+					</p>
+					<p>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
+						eos tenetur beatae nihil dolorum possimus voluptate esse voluptatibus,
+						aliquid ratione facere enim eveniet modi necessitatibus quas
+						asperiores pariatur, amet velit?
+					</p>
+				</div>
+				<img className="about__img-column" alt="outdoor restaurant seating at with umbrellas and a deck" src={require(`../assets/restaurant.jpg`)}></img>
 			</div>
 		</div>
 	);

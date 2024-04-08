@@ -3,39 +3,42 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { GlobalLoginContext } from '../Components/GlobalStateContext';
 import { useForm } from 'react-hook-form';
-import { Controller } from 'react-hook-form';
 import FormFieldOption from '../Components/FormFieldOption';
+import { Link } from 'react-router-dom';
+
+/* Once a true API call is available for availability, update or remove getDates, getTimes, etc. and use useEffect */
 
 const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 	const context = useContext(GlobalLoginContext);
-    const [times, setTimes] = useState([]);
+    const [times, setTimes] = useState([]);;
+    const [submitted, isSubmitted] = useState(false);
     const goTo = useNavigate();
 	const {
 		control,
         register,
 		handleSubmit,
-        watch,
         getValues,
 		formState: { errors }
 	} = useForm();
 	
     let dates = [];
+    let content;
 
     function getDates(){
         for (let i=0; i < availableDateTime.length; i++) {
             dates.push(availableDateTime[i].date)
         }
     }
-    function getTimes( index ){
+    function initializeTimes( index ){
         if(index) {
-            console.log(index);
-            console.log("availableDateTime -> ", JSON.stringify(availableDateTime));
-            console.log("availableDateTime[index] -> ", JSON.stringify(availableDateTime[index]));
-            console.log("availableDateTime[index].times -> ", JSON.stringify(availableDateTime[index].times));
+            // console.log(index);
+            // console.log("availableDateTime -> ", JSON.stringify(availableDateTime));
+            // console.log("availableDateTime[index] -> ", JSON.stringify(availableDateTime[index]));
+            // console.log("availableDateTime[index].times -> ", JSON.stringify(availableDateTime[index].times));
             setTimes(availableDateTime[index].times);
         }
     }
-    function handleAvailability() {
+    function updateTimes() {
         console.log("availableDateTime Before -> ", JSON.stringify(availableDateTime));
         let availability = [];
         for (let i = 0; i < availableDateTime.length; i++) {
@@ -56,31 +59,37 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
     const onSubmit = async e => {
         console.log("e -> ",e);
         console.log("JSON.stringify(e) -> ",JSON.stringify(e));
-		/* Add server connection here to make booking here and remove hardcoded result once set up */
-        
+		/* Add server connection here to make booking here and remove hardcoded/global result once set up */
+
 		const result = {
-            "date": "Sat Apr 13 2024 00:00:00 GMT-0400 (Eastern Daylight Time)",
-            "time": "21:30:00",
-            "number": "4",
-            "occasion": "justBecause"
+            date: (availableDateTime[e.date].date).toLocaleDateString("en-US"), 
+            time: (availableDateTime[e.date].times[e.time] + " PM"), 
+            number: e.number, 
+            occasion: e.occasion
         }
-        handleAvailability()
-		context.setName(result.firstName);
-		context.setLoginState(true);
+        let bookings = context.myReservations;
+        bookings.push(result);
+        context.setMyReservations(bookings);
+        updateTimes();
+        isSubmitted(true);
+        
+		
        // goTo("/reservations", { replace: true });
 	};
-    getDates(availableDateTime);
-
-	return (
-		
-			<form className={`booking-form__container form-container`} onSubmit={handleSubmit(onSubmit)}>
+    function setContent() {
+        if(!submitted) {
+            content = (
+                <form className={`booking-form__container form-container`} onSubmit={handleSubmit(onSubmit)}>
                 <div className="form__field-group">
 					<label className="required" htmlFor='date'>Available Dates: </label>
 					{errors.date && (
 						<p className="form__error-message">{errors.date.message}</p>
 					)}
 					
-                    <select key="dateSelectField"
+                    <select 
+                        data-testid="dateSelect"
+                        key="dateSelectField"
+                        aria-required="true" 
                         {...register("date", {
 							required: "A date is required.",
 							minLength: {
@@ -88,7 +97,7 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 								message: "A date is required."
 							  }
 						})}
-                        onBlur={() => { getTimes(getValues("date")) }}
+                        onBlur={() => { initializeTimes(getValues("date")) }}
                         >
                         <option key="selectDate" value="" default>Select a date.</option>
                         {(dates).map((date,index) => {return <FormFieldOption optionKey={(date.toDateString()).replaceAll(' ', '-')} value={index} text={date.toDateString()}/> })}
@@ -100,7 +109,11 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 						<p className="form__error-message">{errors.date.message}</p>
 					)}
 					
-                    <select key="timeSelectField" {...register("time", {
+                    <select 
+                        data-testid="timeSelect"
+                        key="timeSelectField" 
+                        aria-required="true" 
+                        {...register("time", {
 							required: "A time is required.",
 							minLength: {
 								value: 1,
@@ -119,6 +132,7 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 						<p className="form__error-message">{errors.number.message}</p>
 					)}
 					<input
+                        aria-required="true" 
 						type="number" 
 						name="number"
 						placeholder="Enter a number."
@@ -151,6 +165,20 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 				</div>
 				<button type="submit" className={`booking-form__submit-button submit-button button`}>Submit Reservation</button>
 			</form>
+            )
+        }
+        else {
+            content = (
+                <p className="booking-confirmation">Thank you for your booking! Return to <Link to="/reservations">Reservations</Link> to see what you have scheduled.</p>
+            )
+        }
+    }
+    getDates(availableDateTime);
+    setContent();
+	return (
+        <>
+            {content}	
+        </>
 	);
 };
 

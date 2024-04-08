@@ -245,13 +245,12 @@ img.featured-banner__front-image {
   height: 300px;
 }
 .featured-banner__back-image {
-  left: -25px;
-  bottom: -50px;
+  bottom: -20px;
   transform: scaleX(-1);
 }
 .featured-banner__front-image {
-  left: 175px;
-  bottom: 300px;
+  left: -85px;
+  bottom: 10px;
 }
 /* ---- END: Featured Banner ---- */
 /* ---- START: Featured Cards ---- */
@@ -352,6 +351,28 @@ h3.testimonial__name {
   text-overflow: ellipsis;
 }
 /* ---- END: Testimonial Banner ---- */
+/* ---- Start: Reservation Cards ---- */
+section.reservation-cards {
+ padding: 0px;
+}
+.reservation-cards__card-row {
+  display: flex;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+  .card {
+    min-width: 20%;
+    width: 22%;
+    max-height: 130px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .card__title {
+    text-transform: capitalize;
+    text-align: center;
+    width: 100%;
+  }
+}
+/* ---- END: Reservation Cards ---- */
 /* ---- START: Forms ---- */
 .form-container {
   padding-bottom: 60px;
@@ -460,6 +481,34 @@ article.home {
   padding: 0px;
 }
 /* ---- START: Home Only ---- */
+/* ---- START: About Only ---- */
+.about-container {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 10px;
+  padding-bottom: 60px;
+  p {
+    padding-top: 0px;
+    margin-top: 0px;
+    padding-bottom: 1em;
+  }
+}
+.about__text-column,
+.about__img-column {
+  width: 50%;
+}
+.about__img-column {
+  overflow:hidden;
+  max-height: 300px;
+}
+/* ---- START: About Only ---- */
+/* ---- START: Reservations Only ---- */
+.reservations .title-container__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* ---- END: Reservations Only ---- */
 /* ---- START: Logged In Links ---- */
 /* header and footer */
 .nav__hover-state-links {
@@ -475,3 +524,4 @@ nav .account-hover:hover .nav__hover-state-links {
   background-color: rgba(250, 206, 20,0.15);
   padding: 10px;
 }
+/* ---- END: Logged In Links ---- */

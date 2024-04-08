@@ -52,6 +52,7 @@ const CreateAnAccount = (props) => {
                                 <p className="form__error-message">{errors.username.message}</p>
                             )}
                             <input
+                                aria-required="true" 
                                 type="text" 
                                 name="username"
                                 placeholder="Enter your username here." 
@@ -70,6 +71,7 @@ const CreateAnAccount = (props) => {
                                 <p className="form__error-message">{errors.password.message}</p>
                             )}
                             <input
+                                aria-required="true" 
                                 type="password" 
                                 name="password"
                                 placeholder="Enter your password here." 
@@ -88,6 +90,7 @@ const CreateAnAccount = (props) => {
                                 <p className="form__error-message">{errors.password.message}</p>
                             )}
                             <input
+                                aria-required="true" 
                                 type="password" 
                                 name="passwordConfirmation"
                                 placeholder="Enter your password again here." 
