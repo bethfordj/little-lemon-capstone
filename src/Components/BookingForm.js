@@ -79,11 +79,11 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
     function setContent() {
         if(!submitted) {
             content = (
-                <form className={`booking-form__container form-container`} onSubmit={handleSubmit(onSubmit)}>
+                <form data-testid="bookingForm" className={`booking-form__container form-container`} onSubmit={handleSubmit(onSubmit)}>
                 <div className="form__field-group">
 					<label className="required" htmlFor='date'>Available Dates: </label>
 					{errors.date && (
-						<p className="form__error-message">{errors.date.message}</p>
+						<p data-testid="dateError" className="form__error-message">{errors.date.message}</p>
 					)}
 					
                     <select 
@@ -151,10 +151,6 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 				</div>
                 <div className="form__field-group">
 					<label htmlFor='occasion'>Occasion: </label>
-					{errors.date && (
-						<p className="form__error-message">{errors.occasion.message}</p>
-					)}
-					
                     <select {...register("occasion")}>
                     <option value="" default>What is the gathering for?</option>
                         <option key="anniversary" value="anniversary">Anniversary</option>
@@ -163,7 +159,7 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
                         <option key="justBecause" value="justBecause">Just Because</option>
                     </select>
 				</div>
-				<button type="submit" className={`booking-form__submit-button submit-button button`}>Submit Reservation</button>
+				<button type="submit" data-testid="submitBtn" className={`booking-form__submit-button submit-button button`}>Submit Reservation</button>
 			</form>
             )
         }

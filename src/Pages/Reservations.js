@@ -22,7 +22,7 @@ const Reservations = () => {
 				    <h1 className="title-container__title">Reservations</h1>
 					<ButtonLink  className={`reservation-cards__button booking-button button`} to="/reservations/book">Book a Table</ButtonLink>
 			    </div>
-				<ReservationCards {...cardContent} />
+				{ (cardContent.reservations.length > 0) ? <ReservationCards {...cardContent} /> : <p className="no-reservations">You have no upcoming reservations at this time.</p>}
 		</article>
 	);
 };

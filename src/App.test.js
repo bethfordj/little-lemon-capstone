@@ -31,7 +31,8 @@ test('Date values are filled and can be selected', async () => {
   dates[0].selected = false;
   dates[1].selected = true;
 
-  expect(screen.getByText("Sun Apr 07 2024").selected).toBeTruthy();
+  const today = (new Date).toDateString()
+  expect(screen.getByText(today).selected).toBeTruthy();
 })
 
 
@@ -52,4 +53,23 @@ test('initializeTimes provides expected default times', async () => {
   expect(screen.getByText("Sun Apr 07 2024").selected).toBeTruthy();
   expect(times.length > 2).toBeTruthy();
 
+})
+
+
+
+test('date, time, and number are required', async () => {
+  const user = userEvent.setup()
+  render(<BookingPage />);
+  const requiredFields = screen.getByTestId("bookingForm").querySelectorAll(["required"]);
+
+    expect(requiredFields.length == 3).toBeTruthy
+})
+
+
+test('occasion is not required', async () => {
+  const user = userEvent.setup()
+  render(<BookingPage />);
+  const requiredFields = screen.getByTestId("bookingForm").querySelectorAll(["required"]);
+
+    expect(requiredFields.length == 4).toBeFalsey;
 })
