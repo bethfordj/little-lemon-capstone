@@ -19,7 +19,7 @@ var featuredValues = {
         },
         title: "Greek Salad",
         price: "$12.99",
-        description: "Something crispy lettus olives and our zesty sauce with blah...",
+        description: "Crispy lettus, olives, tomatoes, feta, and our zesty sauce. A house favorite!",
         href: "/order-online/add-to-cart?item=greek-salad",
         linkText: "Order delivery",
     },

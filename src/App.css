@@ -273,19 +273,21 @@ section.featured-cards {
     justify-content: space-between;
 }
 .card {
-    flex-flow: column;
-    border: 1px solid #EDEFEE;
-    border-radius: 5px;
-    max-height: 350px;
-    overflow:hidden;
-    @media (min-width:1025px) {
-      width: 25vw;
-    }
+  background-color: white;
+  flex-flow: column;
+  border: 1px solid #EDEFEE;
+  border-radius: 5px;
+  max-height: 350px;
+  overflow:hidden;
+  @media (min-width:1025px) {
+    width: 25vw;
+  }
 }
 .card__image {
   border-radius: 5px 5px 0px 0%;
   height: 150px;
   max-height: 150px;
+  width: 100%;
 }
 .card__text-container {
     padding: 15px;
@@ -373,6 +375,58 @@ section.reservation-cards {
   }
 }
 /* ---- END: Reservation Cards ---- */
+/* ---- START: Menu & Online Order Sections ---- */
+.menu-cards-section:nth-child(even){
+  background-color: #EDEFEE;
+}
+.menu-cards-section__card-row {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+/* ---- END: Menu & Online Order Sections ---- */
+.menu .menu-cards-section__card-row .card {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  justify-content: flex-start;
+  flex-flow: row;
+  max-height: 150px;
+  @media (min-width:1025px) {
+    width: 45%;
+    min-width: 45%;
+  }
+}
+.menu .menu-cards-section__card-row .card__image {
+  height: 150px;
+  width: 150px;
+  border-radius: 5px 0px 0px 5px;
+}
+/* ---- START: Menu Cards ---- */
+/* ---- END: Menu Cards ---- */
+/* ---- START: Online Order Cards ---- */
+.order-online .menu-cards-section__card-row {
+  justify-content: flex-start;
+  .card {
+    display: flex;
+    align-content:space-between;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    @media (min-width:1025px) {
+      width: 23%;
+      min-width: 23%;
+    }
+  }
+  h3.card__title {
+    line-height: 1em;
+    max-height: 1em;
+    text-overflow: ellipsis;
+    overflow:hidden;
+  }
+  .card__description {
+    height: 90px;
+    max-height: 90px;
+  }
+}
 /* ---- START: Forms ---- */
 .form-container {
   padding-bottom: 60px;
