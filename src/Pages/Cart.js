@@ -1,10 +1,11 @@
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import { Helmet } from 'react-helmet';
+import EditableCart from '../Components/EditableCart';
 
 const Cart = () => {
-	const navigate = useNavigate();
+
 	return (
-		<div className={`container cart`}>
+		<article className={`container cart`}>
 			<Helmet>
                 <title>Cart</title>
 				<description>See what's in your cart.</description>
@@ -12,10 +13,8 @@ const Cart = () => {
 			<div className="title">
 				<h1>My Cart</h1>
 			</div>
-			<div className="cart-container">
-				Cart component to go here
-			</div>
-		</div>
+			<EditableCart />
+		</article>
 	);
 };
 

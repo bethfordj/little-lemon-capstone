@@ -1,11 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import FeaturedBanner from '../Components/FeatureBanner';
 import { Helmet } from 'react-helmet';
 import FeaturedCards from '../Components/FeaturedCards';
 import TestimonialsBanner from '../Components/TestimonialsBanner';
-
-
-
 
 
 var featuredValues = {
@@ -74,7 +70,7 @@ var testimonialValues = [
 ];
 
 const Home = () => {
-	const navigate = useNavigate();
+	
 	return (
 		<article className={`container home`}>
             <Helmet>

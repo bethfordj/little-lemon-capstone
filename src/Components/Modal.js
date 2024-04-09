@@ -37,7 +37,7 @@ const Modal = ({isOpen,setIsOpen,content,lastFocus}) => {
                         <p className="modal__message">You added {content.name} to your cart. What would you like to do next?</p>
                         <div className="modal__button-row">
                             <button onClick={() => {goTo("/order-online/my-cart", { replace: true })}} className={`modal__go-to-cart button`}>Go to Cart</button>
-                            { (location == "/" ) && <button onClick={() => {goTo("/order-online", { replace: true })}} className={`modal__go-to-online-store button`}>Go to the Full Online Menu</button>}
+                            { (location.pathname == "/" ) && <button onClick={() => {goTo("/order-online", { replace: true })}} className={`modal__go-to-online-store button`}>Go to the Full Online Menu</button>}
                             <button onClick={() => {toggleModal()}} aria-label="Close dialog" className={`modal__close button`}>Go Back to Page</button>
                         </div>
                     </div>

@@ -1,8 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 const Contact = () => {
-	const navigate = useNavigate();
+	
 	return (
 		<article className={`container contact`}>
 			<Helmet>
