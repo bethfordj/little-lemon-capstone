@@ -1,6 +1,18 @@
 import React from 'react';
+import AddToCart from './AddToCart';
 
 const Card = (props) => {
+    let item = {};
+    function defineItem() {
+        if(props.price) {
+            item = {
+                name: props.title,
+                price: props.price,
+                img: props.img
+            }
+        }
+    }
+    defineItem();
 
         return (
             <div className="card">
@@ -16,7 +28,7 @@ const Card = (props) => {
                         { (props.price) && <span className="card__price">{props.price}</span> }
                     </div>
                     <p className="card__description">{props.description}</p>
-                    { props.href && (<a className="card__order-link" href={props.href}>{props.linkText}</a>)}
+                    { (props.linkText && props.price) && <AddToCart className="card__order-link" linkText={props.linkText} section={props.class} name={props.title} item={item}/>}
                 </div>
             </div>
         )

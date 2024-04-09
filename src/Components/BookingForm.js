@@ -1,6 +1,4 @@
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { GlobalLoginContext } from '../Components/GlobalStateContext';
 import { useForm } from 'react-hook-form';
 import FormFieldOption from '../Components/FormFieldOption';
@@ -10,9 +8,9 @@ import { Link } from 'react-router-dom';
 
 const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 	const context = useContext(GlobalLoginContext);
-    const [times, setTimes] = useState([]);;
+    const [times, setTimes] = useState([]);
     const [submitted, isSubmitted] = useState(false);
-    const goTo = useNavigate();
+
 	const {
 		control,
         register,
@@ -74,7 +72,6 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
         isSubmitted(true);
         
 		
-       // goTo("/reservations", { replace: true });
 	};
     function setContent() {
         if(!submitted) {

@@ -221,7 +221,7 @@ const OrderOnline = () => {
 				<h1>Place an Order Online</h1>
 			</div>
 			<div className="order-container">
-			<p className="menu__call-to-action">Order for pickup or delivery today!</p>
+				<p className="order__call-to-action">Order for pickup or delivery today!</p>
 				<FeaturedCards key="menu__featured-cards" {...specials} />
 				{ sections ? (sections).map((section) => {return <MenuSection {...section}/>}): <p className="no-sections">Pardon our dust - our online menu is coming soon!</p>}
 			</div>

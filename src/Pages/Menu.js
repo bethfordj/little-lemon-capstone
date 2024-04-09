@@ -218,7 +218,6 @@ const Menu = () => {
 				<p className="menu__call-to-action">See what's available for dine-in orders!</p>
 				<FeaturedCards key="menu__featured-cards" {...specials} />
 				{ sections ? (sections).map((section) => {return <MenuSection {...section}/>}): <p className="no-sections">Pardon our dust - our online menu is coming soon!</p>}
-				
 			</div>
 		</article>
 	);
