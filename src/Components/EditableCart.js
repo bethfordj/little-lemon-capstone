@@ -8,7 +8,17 @@ const EditableCart = () => {
 	const [total, setTotal] = useState(0);
     const [itemObj, setItemObj] = useState({});
     const [itemTotals, setItemTotals] = useState({});
+	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const context = useContext(GlobalLoginContext);
+
+    useEffect(() => {
+		const handleResize = () => {
+		  setScreenWidth(window.innerWidth);
+		}
+	
+		window.addEventListener('resize', handleResize);;
+		return () => { window.removeEventListener('resize', handleResize); };
+	}, [])
 
     function assembleOrder() {
         var object = {};
@@ -50,13 +60,13 @@ const EditableCart = () => {
             <thead>
                 <tr className="cart-table__header-row">
                     <th className="cart-table__column-title" scope="col">Dish</th>
-                    <th className="cart-table__column-title" scope="col">Price for One</th>
+                    { screenWidth > 800 && <th className="cart-table__column-title" scope="col">Price for One</th> }
                     <th className="cart-table__column-title" scope="col">Number Added</th>
                     <th className="cart-table__column-title" scope="col">Total Price</th>
                 </tr>
             </thead>
             <tbody>
-                {Object.keys(itemObj).map( (key) => {return <EditableCartRow itemTotals={itemTotals} setItemTotals={setItemTotals} item={itemObj[key]} />})}
+                {Object.keys(itemObj).map( (key) => {return <EditableCartRow itemTotals={itemTotals} setItemTotals={setItemTotals} screenWidth={screenWidth} item={itemObj[key]} />})}
             </tbody>
             
         </table>

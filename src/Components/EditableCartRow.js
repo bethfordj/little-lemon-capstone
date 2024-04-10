@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const EditableCartRow = ({itemTotals, setItemTotals, item}) => {
+const EditableCartRow = ({itemTotals, setItemTotals, item, screenWidth}) => {
     let total;
 
     function getTotal() {
@@ -23,10 +23,10 @@ const EditableCartRow = ({itemTotals, setItemTotals, item}) => {
 
     return <tr className="cart-item-container">
         <th className="cart-item__name"scope="row">
-        <img className="card__image" alt="" src={require(`../assets/${item.img.src}`)}></img>
+       { screenWidth > 800 && <img className="card__image" alt="" src={require(`../assets/${item.img.src}`)}></img> }
             <span>{item.name}</span>
         </th>
-        <td className="cart-item__price">{item.price} each</td>
+        { screenWidth > 800 && <td className="cart-item__price">{item.price} each</td> }
         <td className="cart-item__number">{item.number}</td>
         { (total) ? <td className="cart-item__total">{total}</td> : <td className="cart-item__total">Calculating...</td> }
     </tr>

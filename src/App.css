@@ -39,14 +39,10 @@ body {
   max-width: 100%;
   overflow-x:hidden;
   @media (min-width:801px) {
-    padding-right: 10vw;
-    padding-left: 10vw;
+    /* padding-right: 80px;
+    padding-left: 80px; */
   }
-  @media (min-width: 801px) and (max-width:800px) {
-    padding-right: 80px;
-    padding-left: 80px;
-  }
-  @media (max-width: 801px) {
+  @media (max-width: 800px) {
     padding: 0px;
   }
 }
@@ -61,7 +57,10 @@ article {
 section {
   padding-top: 30px;
   padding-bottom: 30px;
-
+  @media (min-width: 801px) {
+    padding-right: 10vw;
+    padding-left:10vw;
+  }
   @media (max-width: 800px) {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -141,8 +140,10 @@ button {
   display: flex;
   padding-top: 10px;
   padding-bottom: 15px;
-  @media  (min-width: 801) {
+  @media  (min-width: 801px) {
     height: 60px;
+    padding-right: 10vw;
+    padding-left:10vw;
   }
 }
 .nav__container ul {
@@ -178,9 +179,6 @@ button {
 /* Desktop */
 @media (min-width:801px) {
   .nav__container {
-    height: 50px;
-  }
-  .nav__container {
     .logo-container {
       width: 25vw;
     }
@@ -194,7 +192,7 @@ button {
   }
 }
 /* Tablet & Mobile */
-@media (max-width:801px) {
+@media (max-width:800px) {
   .nav__container {
     min-height: 100px;
     .logo-container {
@@ -331,12 +329,13 @@ img.featured-banner__front-image {
     height: 300px;
   }
   @media (max-width:800px) {
-    width: 100%;
+    width: 90%;
     display: block;
     padding: 20px 0px;
+    margin: 0px 5%;
   }
 }
-@media (min-width:801px) {
+@media (min-width:1025px) {
   .featured-banner.about-banner {
     max-height: 350px;
   }
@@ -347,6 +346,11 @@ img.featured-banner__front-image {
   .featured-banner__front-image {
     left: -85px;
     bottom: 10px;
+  }
+}
+@media (min-width:801px) and (max-width:1024px) {
+  .featured-banner__back-image {
+    display:none;
   }
 }
 /* ---- END: Featured Banner ---- */
@@ -754,10 +758,10 @@ label {
 /* ---- START: Cart ---- */
 table {
   overflow:hidden;
-  width: 100%;
+  width: 70%;
   @media (max-width:800px) {
-    width: 70%;
-    margin: 50px 0px;
+    width: 90%;
+    margin: 50px 5%;
   }
 }
 tr {
@@ -795,7 +799,14 @@ table.cart-table img {
   font-size: 2em;
   font-weight: bold;
   text-align:right;
-  padding: 30px 0px;
+  padding: 30px 0px; 
+  width: 70%;
+  @media (max-width:800px) {
+    padding: 20px 0px;
+    width: 90%;
+    margin: 0px 5%;
+    text-align:center;
+  }
 }
 /* ---- END: Cart ---- */
 /* ---- START: Footer ---- */
@@ -806,6 +817,10 @@ footer {
   padding-top: 30px;
   padding-bottom: 30px;
   justify-content: space-between;
+  @media (min-width: 801px) {
+    padding-right: 10vw;
+    padding-left:10vw;
+  }
 }
 .footer__column-1 {
   align-content: center;
