@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 const About = () => {
 	
 	return (
-		<div className={`container about`}>
+		<article className={`container about`}>
 			<Helmet>
                 <title>About</title>
 				<description>Learn more about the owners and restaurant background</description>
@@ -28,7 +28,7 @@ const About = () => {
 				</div>
 				<img className="about__img-column" alt="outdoor restaurant seating at with umbrellas and a deck" src={require(`../assets/restaurant.jpg`)}></img>
 			</div>
-		</div>
+		</article>
 	);
 };
 

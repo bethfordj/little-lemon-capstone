@@ -49,6 +49,10 @@ body {
 article {
   padding-top: 30px;
   padding-bottom: 60px;
+  @media (min-width: 801px) {
+    padding-right: 10vw;
+    padding-left:10vw;
+  }
   @media (max-width: 800px) {
     padding-top: 20px;
     padding-bottom: 30px;
@@ -57,10 +61,6 @@ article {
 section {
   padding-top: 30px;
   padding-bottom: 30px;
-  @media (min-width: 801px) {
-    padding-right: 10vw;
-    padding-left:10vw;
-  }
   @media (max-width: 800px) {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -262,6 +262,12 @@ button {
 }
 /* ---- END: Logo & Navbar ---- */
 /* ---- START: Featured Banner ---- */
+@media (min-width: 801px) {
+  .home section {
+    padding-right: 10vw;
+    padding-left:10vw;
+  }
+}
 .home .featured-banner.hero-banner {
     background-color: #495E57;
     color: white;
