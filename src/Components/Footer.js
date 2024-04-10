@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationLinks from './NavigationLinks';
+import FooterLinks from './FooterLinks';
 import LinkColumn from './LinkColumn';
 
 var contactList = [
@@ -37,7 +37,7 @@ const Footer = () => {
                 <div className="footer__column-1">
                     <img className="footer__logo" alt="little lemon restaurant's logo" src={require("../assets/logo-upright.png")}></img>
                 </div>
-                <LinkColumn parent="footer" title="Navigation" hlevel={2} i="2" content={<NavigationLinks/>} />
+                <LinkColumn parent="footer" title="Navigation" hlevel={2} i="2" content={<FooterLinks/>} />
                 <LinkColumn parent="footer" title="Contact" hlevel={2} i="3" list={contactList} />
                 <LinkColumn parent="footer" title="Social Media Links" hlevel={2} i="4" list={socialList} />
             </footer>
