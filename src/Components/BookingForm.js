@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useMemo } from 'react';
 import { GlobalLoginContext } from '../Components/GlobalStateContext';
 import { useForm } from 'react-hook-form';
 import FormFieldOption from '../Components/FormFieldOption';
@@ -23,26 +23,55 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 		formState: { errors }
 	} = useForm();
 
-    let dates = [];
+    // let dates = [];
     let content;
 
-    function getDates(){
+    // this is unnecessary - can be memoized or just referenced based on the current selection.
+    // also there are much shorter/simpler ways to copy an array -- https://www.freecodecamp.org/news/how-to-clone-an-array-in-javascript-1d3183468f6a/
+    // Arrays.from() or .slice() are both good and clear in your intent
+
+  // Maybe try this instead
+  let dates = useMemo(() => {
+    return availableDateTime.map((it) => it.date);
+  }, [availableDateTime]);
+
+  function getDates(){
         for (let i=0; i < availableDateTime.length; i++) {
             dates.push(availableDateTime[i].date)
         }
     }
+
+    // I don't think this is necessary -- you can just reference availableDateTime[index].times directly, times is redundant state. Or you can useMemo if you really want.
     function initializeTimes( index ){
         if(index) {
             // console.log(index);
             // console.log("availableDateTime -> ", JSON.stringify(availableDateTime));
             // console.log("availableDateTime[index] -> ", JSON.stringify(availableDateTime[index]));
             // console.log("availableDateTime[index].times -> ", JSON.stringify(availableDateTime[index].times));
+
             setTimes(availableDateTime[index].times);
         }
     }
 
-    // MIKE COME BACK TO THIS
+    // I don't think this is how you want to do this update. This is the challenge you can get into with modifying nested state in react.
+  // you don't want to be pushing and splicing on the values directly.
     function updateTimes() {
+
+    // I haven't run this but I think something like this would be better.
+      let selectedDateIndex = getValues("date");
+      let selectedTimeIndex = getValues("time");
+      setAvailableDateTime(
+        availableDateTime.map((dateEntry, dateIndex) => {
+          return {
+            date: dateEntry.date,
+            times: dateEntry.times.filter((timeEntry, timeIndex) => {
+              return (timeIndex !== selectedTimeIndex && dateIndex !== selectedDateIndex)
+            })
+          }
+        })
+      )
+
+
         console.log("availableDateTime Before -> ", JSON.stringify(availableDateTime));
         let availability = [];
         for (let i = 0; i < availableDateTime.length; i++) {
@@ -76,11 +105,13 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
         let bookings = context.myReservations;
         bookings.push(result);
         context.setMyReservations(bookings);
-        updateTimes();
+        updateTimes(e.date, e.time);
         isSubmitted(true);
 
 
 	};
+
+    // why is this a separate method instead of just `content =`?
     function setContent() {
         if(!submitted) {
             content = (
