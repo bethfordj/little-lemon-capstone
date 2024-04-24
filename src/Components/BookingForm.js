@@ -1,10 +1,14 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useMemo } from 'react';
 import { GlobalLoginContext } from '../Components/GlobalStateContext';
 import { useForm } from 'react-hook-form';
 import FormFieldOption from '../Components/FormFieldOption';
 import { Link } from 'react-router-dom';
 
 /* Once a true API call is available for availability, update or remove getDates, getTimes, etc. and use useEffect */
+// This class has too many debugging logs still left in it
+// It can be a good idea depending on complexity to move your server interactions into a separate layer, so `onSubmit`
+// wouldn't call the server, it would call that client and keeps the specifics of the server interaction out of
+// your component
 
 const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 	const context = useContext(GlobalLoginContext);
@@ -18,25 +22,56 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
         getValues,
 		formState: { errors }
 	} = useForm();
-	
-    let dates = [];
+
+    // let dates = [];
     let content;
 
-    function getDates(){
+    // this is unnecessary - can be memoized or just referenced based on the current selection.
+    // also there are much shorter/simpler ways to copy an array -- https://www.freecodecamp.org/news/how-to-clone-an-array-in-javascript-1d3183468f6a/
+    // Arrays.from() or .slice() are both good and clear in your intent
+
+  // Maybe try this instead
+  let dates = useMemo(() => {
+    return availableDateTime.map((it) => it.date);
+  }, [availableDateTime]);
+
+  function getDates(){
         for (let i=0; i < availableDateTime.length; i++) {
             dates.push(availableDateTime[i].date)
         }
     }
+
+    // I don't think this is necessary -- you can just reference availableDateTime[index].times directly, times is redundant state. Or you can useMemo if you really want.
     function initializeTimes( index ){
         if(index) {
             // console.log(index);
             // console.log("availableDateTime -> ", JSON.stringify(availableDateTime));
             // console.log("availableDateTime[index] -> ", JSON.stringify(availableDateTime[index]));
             // console.log("availableDateTime[index].times -> ", JSON.stringify(availableDateTime[index].times));
+
             setTimes(availableDateTime[index].times);
         }
     }
+
+    // I don't think this is how you want to do this update. This is the challenge you can get into with modifying nested state in react.
+  // you don't want to be pushing and splicing on the values directly.
     function updateTimes() {
+
+    // I haven't run this but I think something like this would be better.
+      let selectedDateIndex = getValues("date");
+      let selectedTimeIndex = getValues("time");
+      setAvailableDateTime(
+        availableDateTime.map((dateEntry, dateIndex) => {
+          return {
+            date: dateEntry.date,
+            times: dateEntry.times.filter((timeEntry, timeIndex) => {
+              return (timeIndex !== selectedTimeIndex && dateIndex !== selectedDateIndex)
+            })
+          }
+        })
+      )
+
+
         console.log("availableDateTime Before -> ", JSON.stringify(availableDateTime));
         let availability = [];
         for (let i = 0; i < availableDateTime.length; i++) {
@@ -59,20 +94,24 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
         console.log("JSON.stringify(e) -> ",JSON.stringify(e));
 		/* Add server connection here to make booking here and remove hardcoded/global result once set up */
 
+      // your indentation here is off which is confusing. Not a bad habit to have the IDE auto-lint everything on commit
 		const result = {
-            date: (availableDateTime[e.date].date).toLocaleDateString("en-US"), 
-            time: (availableDateTime[e.date].times[e.time] + " PM"), 
-            number: e.number, 
+            date: (availableDateTime[e.date].date).toLocaleDateString("en-US"),
+            time: (availableDateTime[e.date].times[e.time] + " PM"),
+            number: e.number,
             occasion: e.occasion
         }
+        // again, don't push to the array in state, set a new array
         let bookings = context.myReservations;
         bookings.push(result);
         context.setMyReservations(bookings);
-        updateTimes();
+        updateTimes(e.date, e.time);
         isSubmitted(true);
-        
-		
+
+
 	};
+
+    // why is this a separate method instead of just `content =`?
     function setContent() {
         if(!submitted) {
             content = (
@@ -82,11 +121,11 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 					{errors.date && (
 						<p data-testid="dateError" className="form__error-message">{errors.date.message}</p>
 					)}
-					
-                    <select 
+
+                    <select
                         data-testid="dateSelect"
                         key="dateSelectField"
-                        aria-required="true" 
+                        aria-required="true"
                         {...register("date", {
 							required: "A date is required.",
 							minLength: {
@@ -105,11 +144,11 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
 					{errors.date && (
 						<p className="form__error-message">{errors.date.message}</p>
 					)}
-					
-                    <select 
+
+                    <select
                         data-testid="timeSelect"
-                        key="timeSelectField" 
-                        aria-required="true" 
+                        key="timeSelectField"
+                        aria-required="true"
                         {...register("time", {
 							required: "A time is required.",
 							minLength: {
@@ -122,15 +161,15 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
                         { (times.length > 0) ? (times).map(( time, index ) => {return <FormFieldOption optionKey={getValues("date").concat((time).replaceAll(' ', '-'))}value={index} text={`${time} PM`}/> }) : <option key="selectDateFirst" disabled value="" default>You must select a date first.</option> }
                     </select>
 				</div>
-                
+
 				<div className="form__field-group">
 					<label className="required" htmlFor='number'>Number of Guests: </label>
 					{errors.number && (
 						<p className="form__error-message">{errors.number.message}</p>
 					)}
 					<input
-                        aria-required="true" 
-						type="number" 
+                        aria-required="true"
+						type="number"
 						name="number"
 						placeholder="Enter a number."
 						{...register("number", {
@@ -149,6 +188,9 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
                 <div className="form__field-group">
 					<label htmlFor='occasion'>Occasion: </label>
                     <select {...register("occasion")}>
+                      {
+                        // my code editor says "default" is not allowed here
+                         }
                     <option value="" default>What is the gathering for?</option>
                         <option key="anniversary" value="anniversary">Anniversary</option>
                         <option key="birthday" value="birthday">Birthday</option>
@@ -170,7 +212,7 @@ const BookingForm = ({availableDateTime, setAvailableDateTime, user}) => {
     setContent();
 	return (
         <>
-            {content}	
+            {content}
         </>
 	);
 };

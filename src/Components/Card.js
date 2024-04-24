@@ -1,8 +1,13 @@
 import React from 'react';
 import AddToCart from './AddToCart';
 
+// This is a "me" thing, but I really, really like class comments that say "what does this do and why does it exist"
+// It's the most useful documentation for the lowest effort, and also helps class everything up when you're scanning through something
+
 const Card = (props) => {
     let item = {};
+
+    // again -- why a function if it's only called once?
     function defineItem() {
         if(props.price) {
             item = {

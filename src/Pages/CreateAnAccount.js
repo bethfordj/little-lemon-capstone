@@ -16,6 +16,8 @@ const CreateAnAccount = (props) => {
 	const goTo = useNavigate();
 
 	const onSubmit = async e => {
+    // I feel like this project is missing a bit by not having any interactions with a REST or GRAPHQL back end
+    // a good chunk of react 'weirdness' is in the way it handles data fetching vs the render cycle.
 
         /* Add server connection here once set up to add the user to the database and get their login token */
 

@@ -6,6 +6,14 @@ import EditableCartRow from './EditableCartRow';
 
 const EditableCart = () => {
 	const [total, setTotal] = useState(0);
+
+  // Sorry, some of the comments got written in reverse order.
+    // any time you have multiple collections of objects that are connected to each other by keys, it's kind of a code smell
+    // I would refactor this to have an order, which has a list of Items which each have their properties (maybe another object)
+    // and a count. Then you would just iterate over the items in the order for each row and pass the relevant Item only
+    // to the editable cart row, along with callback methods for when the row was updated.
+    // Then you could use useMemo to recalculte the total order value.
+
     const [itemObj, setItemObj] = useState({});
     const [itemTotals, setItemTotals] = useState({});
 	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -26,12 +34,14 @@ const EditableCart = () => {
         console.log("current in assemble -> ",current);
         for (let i=0; i < current.length; i++) {
             let id = (current[i].name).replaceAll(' ', '-');
+            // object is a really generic name here... what is object?
+            // it sounds as though it is an order?
             if(object[id]) {
                 let item = object[(id)];
                 console.log("item - > ",item);
                 console.log("item.name -> ",item.name);
                 item.number = item.number + 1;
-                object[id] = item;
+                object[id] = item; // unnecessary, you were already modifying the underlying object
             }
             else {
                 current[i].number = 1;
@@ -42,13 +52,15 @@ const EditableCart = () => {
         setItemObj(object);
     }
     function updateTotal() {
-        let currentTotals = itemTotals;
+        // look into useMemo instead of keeping separate state for the running total https://react.dev/reference/react/useMemo
+        let currentTotals = itemTotals; // this local redefinition is unnecessary
         let runningTotal = 0;
         Object.keys(currentTotals).map((key) => { runningTotal = runningTotal + currentTotals[key] });
         console.log("running total -> ",runningTotal);
         setTotal(runningTotal);
     }
     useEffect(() => {
+        // actually, you might use useMemo for assembleOrder as well.
         assembleOrder();
         updateTotal();
       }, [itemTotals]);

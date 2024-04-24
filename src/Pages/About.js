@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet';
 
 const About = () => {
-	
 	return (
 		<article className={`container about`}>
 			<Helmet>

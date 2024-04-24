@@ -3,7 +3,8 @@ import { Helmet } from 'react-helmet';
 import EditableCart from '../Components/EditableCart';
 
 const Cart = () => {
-
+// inconsistent classing -- none on h1. afaik it's good practice to put your namespaced classes on everything
+	// even if you aren't doing anything with them.
 	return (
 		<article className={`container cart`}>
 			<Helmet>

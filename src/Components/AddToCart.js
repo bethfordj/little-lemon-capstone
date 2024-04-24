@@ -17,11 +17,14 @@ const AddToCart = (props) => {
 
     function handleClick() {
         let current = context.myCart;
+        // https://react.dev/learn/updating-arrays-in-state
+        // react weirdness -- you don't want to mutate the array. you can get some weird partial rendering
         current.push(props.item);
         context.setMyCart(current);
         setIsOpen(true);
     }
 
+    // why is this a separate function if you only call it once immediately after?
     function defineComponentContent(){
         if(!isOpen) {
             componentContent = (
