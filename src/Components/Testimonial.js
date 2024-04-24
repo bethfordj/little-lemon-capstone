@@ -16,6 +16,9 @@ const Testimonial = (props) => {
             );
         }
     }
+
+    // again... why the function? I'd understand if it were therefore separately testable, but it's an inner function of
+  // Testimonial function, so it's not.
     image(props);
 
         return (

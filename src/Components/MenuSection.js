@@ -17,6 +17,10 @@ const MenuSection = (props) => {
                     <p className="menu-cards-section__intro">{props.intro}</p>
                 </div>
                 <div className="menu-cards-section__card-row">
+                  {
+                    // I think you also want a key here? the idea is that if the list changes, it doesn't have to recreate every single
+                    // element drawn from the list
+                  }
                     { (props.cards) ? (props.cards).map((card) => {return <Card {...card}/>}): <p className="no-cards">We have no {props.title} options at this time.</p>}
                 </div>
             </section>

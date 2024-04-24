@@ -12,6 +12,8 @@ const NavigationLinks = () => {
 	function logout() {
 		context.setLoginState(false);
 	};
+
+	// a MenuButton component would be a good refactor here so this state isn't mixed with the main header.
 	function toggleHamburgerMenu() {
 		if(showHamburgerMenu) {
 			setShowHamburger(false);
@@ -21,6 +23,7 @@ const NavigationLinks = () => {
 		}
 	}
 
+	// If you're going to use this in a few places, *this* would be a good candidate for that global state object
 	useEffect(() => {
 		const handleResize = () => {
 		  setScreenWidth(window.innerWidth);
@@ -30,7 +33,9 @@ const NavigationLinks = () => {
 		return () => { window.removeEventListener('resize', handleResize); };
 	 }, [])
 	
-
+// if you're basing everything on 800 pixels width, would be good to move this to a utility method so you don't have
+	// magic numbers all over the place. like fun responsive(small, big) where small & big are either elements or
+	// functions that return elements
 	if( context.loginState && screenWidth > 800 ) {
 		content = (
 			<>

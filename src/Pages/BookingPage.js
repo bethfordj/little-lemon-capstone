@@ -5,6 +5,8 @@ import BookingForm from '../Components/BookingForm';
 const BookingPage = () => {
     const today = new Date();
 	const defaultTimes = ["6:00","6:30","7:00","7:30","8:00","8:30","9:00","9:30","10:00","10:30"];
+	// wouldn't be bad to do a quick utility method here instead of a copy & paste. Also, your times are going to be very
+	// slightly offset from each other with all the separate calls to getTime() ;-)
 	const [availableDateTime, setAvailableDateTime] = useState(
 		[
 			{ date: today, times: defaultTimes },

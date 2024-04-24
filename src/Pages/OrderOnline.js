@@ -211,6 +211,7 @@ const OrderOnline = () => {
 	}
 ];
 
+	// doesn't that MenuSelection map statement throw a react complaint about not having a key on the generated elements? See https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key
 	return (
 		<article className={`container order-online`}>
 			<Helmet>

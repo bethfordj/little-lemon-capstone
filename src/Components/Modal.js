@@ -17,6 +17,8 @@ const Modal = ({isOpen,setIsOpen,content,lastFocus}) => {
     function toggleModal() {
         if(isOpen) {
             setIsOpen(false);
+            // did you want to finish this up? I thought using a reference in the caller seemed a little weird. you usually only need those when interacting with non-react components/frameworks.
+            // you might expose something more like an "onClose()" in the properties instead that would pass control back to the caller
             /* the ref did not pass to the child component successfully - since not a req, explore later */
             //lastFocus.focus();
         }
@@ -28,6 +30,7 @@ const Modal = ({isOpen,setIsOpen,content,lastFocus}) => {
 
     let modalContent = (<></>);
 
+    // As implemented this is very much an "ItemAddedModal" not a general reusable "Modal"
     function defineContent() {
         if(isOpen) {
             modalContent = (
